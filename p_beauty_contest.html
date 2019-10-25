@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<html lang="en-US">
+<meta charset="UTF-8">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" src='client.js'></script>-->
+    <!--<script type="text/javascript" src='data_server.js'></script>-->
+    <script type="text/javascript" src='experiment.js'></script>
+    <script data-main="experiment" src="require.js"></script>
+    <!--<script type="text/javascript" src='stim.js'></script>-->
+
+</head>
+
+<body onload="pageLoad();">
+  <div class="screen" id="trial">
+    <h1>P_Beauty Contest is Here!</h1>
+    <p>
+        From 1 to 100, write down the number you think most of the people 
+        would like to guess in the window below and press submit.
+    </p>
+    <form class="subject_guess" id="form_to_submit" onsubmit="return check_input()" method="POST">
+      <div class="wrap-input100 bg1">
+        
+        <span class="label-input">YOUR GUESS *</span>
+        <input class="input" type="text" name="guess" placeholder="Enter Your Value" id="provided_num">
+        
+      </div>
+      <!--<input id="submit" type="button" onclick="see_result()" value="Submit and Check Your Result">-->
+      <!-- <div class="submit">
+        <button class="button" onclick="see_result();" >
+  
+          Submit and Check Your Result!
+            
+        </button>
+      </div> -->
+    </form>
+    <div class="submit">
+      <button class="button" onclick="see_result();" >
+
+        Submit and Check Your Result!
+          
+      </button>
+    </div>
+    
+  </div>
+
+  <div class="screen" id="comparison">
+    <p class="result"> Here is your result!</p>
+    <p>
+        Out of <b id="num_of_part"></b> participants, the average number they have guessed is <b id="average_num"></b>.
+    </p>
+    <!--<button class="button" id="done" onclick="experimentDone();">Completed!</button>-->
+
+  </div>
+</body>
