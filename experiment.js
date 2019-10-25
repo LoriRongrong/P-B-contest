@@ -35,14 +35,15 @@ function see_result(){
     if(!valid_input){
         check_input(inputVal);
     }
-    
+    provide_ave();
     document.getElementById('trial').style.display = 'none';
     document.getElementById('trial').style.visibility = "hidden";
     //console.log(document.getElementById('comparison').style)
     document.getElementById('comparison').style.visibility = 'visible';
     document.getElementById('comparison').style.display = 'block';
     //console.log(document.getElementById('comparison').style)
-    collect_data(inputVal);
+    //collect_data(inputVal);
+    
 }
 
 function check_input(inputVal){
@@ -59,19 +60,30 @@ function check_input(inputVal){
     }
 }
 
-function collect_data(inputVal){
-    const fs = require('fs') 
-    // Write data in 'Output.txt' . 
-    fs.writeFile('Output.txt', inputVal, (err) => { 
+// function collect_data(inputVal){
+//     const fs = require('fs') 
+//     // Write data in 'Output.txt' . 
+//     fs.writeFile('Output.txt', inputVal, (err) => { 
    
-        if (err) throw err; 
-    }) 
-}
-function trial_complete(){
+//         if (err) throw err; 
+//     }) 
+// }
 
-}
+// function trial_complete(){
 
-function experimentDone(){
-    submitExternal(client);
+// }
+function provide_ave(){
+    let ave = 0;
+    for(i=0;i<1000;i++){
+        ave += Math.floor((Math.random() * 100) + 1);
+    }   
+    ave = ave*1.0/1000;
+    document.getElementById("average_num").innerHTML = ave;
+    document.getElementById("num_of_part").innerHTML = 1000;
 }
+    
+
+// function experimentDone(){
+//     submitExternal(client);
+// }
 
