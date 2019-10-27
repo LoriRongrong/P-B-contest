@@ -21,7 +21,7 @@ var trial = {
     sent: "",
     guessed_num: 0,
 };
-var valid_input=false;
+var valid_numInput = false;
 
 function pageLoad(){
     document.getElementById('trial').style.display = 'block';
@@ -29,36 +29,42 @@ function pageLoad(){
 }
 
 function see_result(){
-    var inputVal = document.getElementById("provided_num").value;
-    inputVal = parseInt(inputVal, 10);
-    
-    if(!valid_input){
-        check_input(inputVal);
-    }
-    provide_ave();
-    document.getElementById('trial').style.display = 'none';
-    document.getElementById('trial').style.visibility = "hidden";
-    //console.log(document.getElementById('comparison').style)
-    document.getElementById('comparison').style.visibility = 'visible';
-    document.getElementById('comparison').style.display = 'block';
-    //console.log(document.getElementById('comparison').style)
-    //collect_data(inputVal);
-    
+    if (valid_numInput) {
+        var inputVal = document.getElementById("provided_num").value;
+        inputVal = parseInt(inputVal, 10);
+
+        provide_ave();
+        document.getElementById('trial').style.display = 'none';
+        document.getElementById('trial').style.visibility = "hidden";
+        //console.log(document.getElementById('comparison').style)
+        document.getElementById('comparison').style.visibility = 'visible';
+        document.getElementById('comparison').style.display = 'block';
+        //console.log(document.getElementById('comparison').style)
+        //collect_data(inputVal);
+    }   
 }
 
-function check_input(inputVal){
+
+$('#provided_num').on('keyup', function onEvent(e) {
     // change the value of valid input
-    while(true){
-        if(inputVal>100 || inputVal < 0){
-            alert("Please give an integer between 0 and 100");
-            return false;
-        }
-        else{
-            valid_input=true;
-            break;
-        }
+    //console.log('here')
+
+    var inputVal = document.getElementById("provided_num").value;
+    inputVal = parseInt(inputVal, 10);
+    console.log(typeof inputVal);
+    console.log(inputVal);
+    if(Number.isNaN(inputVal)){
+        alert("Only numbers are allowed");
     }
-}
+    if(inputVal>100 || inputVal < 0){
+        valid_numInput= false
+        alert("Please give an integer between 0 and 100");
+        //return false;
+    }
+    else{
+        valid_numInput = true;
+    }
+});
 
 // function collect_data(inputVal){
 //     const fs = require('fs') 
